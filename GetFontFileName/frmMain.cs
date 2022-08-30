@@ -56,7 +56,7 @@ namespace GetFontFileName
             {
                 if (NextFile.Exists)
                 {
-                    if (fontname == GetFontName(NextFile.FullName))
+                    if (fontname == GetFontName(NextFile.FullName.ToLower()))
                     {
 
                         return NextFile.Name;
@@ -69,8 +69,7 @@ namespace GetFontFileName
         private static string GetFontName(string fontfilename)
         {
             PrivateFontCollection pfc = new PrivateFontCollection();
-            //只要ttf和TTF, 其它的本项目不需要
-            if (fontfilename.EndsWith(".ttf") || fontfilename.EndsWith(".TTF") || fontfilename.EndsWith(".ttc"))
+            if (fontfilename.EndsWith(".ttf") || fontfilename.EndsWith(".ttc"))
             {
                 pfc.AddFontFile(fontfilename);
             }
